@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BT2MQTT.MainPage">
+
+	<VerticalStackLayout Padding="20" Spacing="12">
+		<Label Text="BT2MQTT"
+               FontSize="24"
+               FontAttributes="Bold" />
+
+		<Label x:Name="StatusLabel"
+               Text="Start..."
+               FontSize="18" />
+
+		<Button Text="Scan BLE"
+                Clicked="OnScanBleClicked" />
+
+		<ScrollView HeightRequest="300">
+			<Label x:Name="DevicesLabel"
+                   Text="Žádná zařízení"
+                   FontSize="14" />
+		</ScrollView>
+	</VerticalStackLayout>
+
+</ContentPage>
