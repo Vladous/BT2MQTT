@@ -1,25 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:BT2MQTT.Resources.Strings"
              x:Class="BT2MQTT.MainPage">
 
-	<VerticalStackLayout Padding="20" Spacing="12">
-		<Label Text="BT2MQTT"
-               FontSize="24"
-               FontAttributes="Bold" />
+	<ScrollView>
+		<VerticalStackLayout Padding="20" Spacing="12">
 
-		<Label x:Name="StatusLabel"
-               Text="Start..."
-               FontSize="18" />
+			<Label Text="{x:Static res:AppStrings.AppTitle}"
+                   FontSize="24"
+                   FontAttributes="Bold" />
 
-		<Button Text="Scan BLE"
-                Clicked="OnScanBleClicked" />
+			<Label x:Name="StatusLabel"
+                   Text="{x:Static res:AppStrings.StatusStart}"
+                   FontSize="18" />
 
-		<ScrollView HeightRequest="300">
-			<Label x:Name="DevicesLabel"
-                   Text="Žádná zařízení"
-                   FontSize="14" />
-		</ScrollView>
-	</VerticalStackLayout>
+			<Button Text="{x:Static res:AppStrings.ScanBle}"
+                    Clicked="OnScanBleClicked" />
 
+			<Label Text="{x:Static res:AppStrings.DiscoveredDevices}"
+                   FontSize="18"
+                   FontAttributes="Bold" />
+
+			<CollectionView x:Name="DiscoveredDevicesView"
+                            SelectionMode="None">
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<Border Stroke="LightGray"
+                                StrokeThickness="1"
+                                Padding="10"
+                                Margin="0,4">
+							<VerticalStackLayout Spacing="6">
+								<Label Text="{Binding Name}" FontAttributes="Bold" />
+								<Label Text="{Binding MacAddress}" FontSize="12" />
+								<Button Text="{x:Static res:AppStrings.Save}"
+                                        Clicked="OnSaveDiscoveredDeviceClicked"
+                                        CommandParameter="{Binding MacAddress}" />
+							</VerticalStackLayout>
+						</Border>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+
+			<Label Text="{x:Static res:AppStrings.SavedDevices}"
+                   FontSize="18"
+                   FontAttributes="Bold" />
+
+			<CollectionView x:Name="SavedDevicesView"
+                            SelectionMode="None">
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<Border Stroke="LightGray"
+                                StrokeThickness="1"
+                                Padding="10"
+                                Margin="0,4">
+							<VerticalStackLayout Spacing="6">
+								<Label Text="{Binding Name}" FontAttributes="Bold" />
+								<Label Text="{Binding MacAddress}" FontSize="12" />
+							</VerticalStackLayout>
+						</Border>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+
+		</VerticalStackLayout>
+	</ScrollView>
 </ContentPage>
