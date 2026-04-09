@@ -235,7 +235,7 @@
     <value>Uložit</value>
   </data>
   <data name="SavedDevices" xml:space="preserve">
-    <value>Uložená zařízení</value>
+    <value>Uložená zařízení :</value>
   </data>
   <data name="ScanBle" xml:space="preserve">
     <value>Skenovat BLE</value>
